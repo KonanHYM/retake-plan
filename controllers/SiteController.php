@@ -11,6 +11,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    public $layout = 'index';
     public function behaviors()
     {
         return [
@@ -49,6 +50,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        #TODO:处理主页信息 RETAKE主页
         return $this->render('index');
     }
 
