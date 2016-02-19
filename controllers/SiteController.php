@@ -12,8 +12,9 @@ use app\models\ContactForm;
 class SiteController extends Controller
 {
     public $layout = 'index';
-    public function behaviors()
-    {
+    //TODO:更改主页公共组件为INDEX 并加载AssetBuddle资源集合
+
+    public function behaviors(){
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -35,8 +36,7 @@ class SiteController extends Controller
         ];
     }
 
-    public function actions()
-    {
+    public function actions(){
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -48,14 +48,13 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex()
-    {
+    public function actionIndex(){
         #TODO:处理主页信息 RETAKE主页
         return $this->render('index');
     }
 
-    public function actionLogin()
-    {
+    #TODO:会员验证登录
+    public function actionLogin(){
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -69,15 +68,14 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionLogout()
-    {
+    #TODO:会员验证登出
+    public function actionLogout(){
         Yii::$app->user->logout();
 
         return $this->goHome();
     }
 
-    public function actionContact()
-    {
+    public function actionContact(){
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -89,8 +87,7 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionAbout()
-    {
+    public function actionAbout(){
         return $this->render('about');
     }
 }
