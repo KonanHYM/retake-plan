@@ -11,7 +11,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
-    public $layout = 'index';
+    public $layout = 'main';
     //TODO:更改主页公共组件为INDEX 并加载AssetBuddle资源集合
 
     public function behaviors(){
@@ -69,6 +69,7 @@ class SiteController extends Controller
     }
 
     #TODO:会员验证登出
+    #
     public function actionLogout(){
         Yii::$app->user->logout();
 
